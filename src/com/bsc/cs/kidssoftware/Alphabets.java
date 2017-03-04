@@ -168,14 +168,16 @@ public class Alphabets {
 						lblNewLabel_1.setIcon(imageIcon);
 						gl_panel1.setHorizontalGroup(gl_panel1.createParallelGroup(Alignment.LEADING)
 								.addGroup(gl_panel1.createSequentialGroup()
-										.addContainerGap(247, Short.MAX_VALUE).addComponent(lblNewLabel_1,
-												GroupLayout.PREFERRED_SIZE, 325, GroupLayout.PREFERRED_SIZE)
-										.addContainerGap()));
+										.addGap(277)
+										.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 325, GroupLayout.PREFERRED_SIZE)
+										.addContainerGap(341, Short.MAX_VALUE))
+						);
 						gl_panel1.setVerticalGroup(gl_panel1.createParallelGroup(Alignment.LEADING)
-								.addGroup(gl_panel1
-										.createSequentialGroup().addGap(65).addComponent(lblNewLabel_1,
-												GroupLayout.PREFERRED_SIZE, 350, GroupLayout.PREFERRED_SIZE)
-										.addContainerGap(100, Short.MAX_VALUE)));
+								.addGroup(gl_panel1.createSequentialGroup()
+										.addGap(75)
+										.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 350, GroupLayout.PREFERRED_SIZE)
+										.addContainerGap(100, Short.MAX_VALUE))
+						);
 						alphabets_jp.setLayout(gl_panel1);
 					} catch (Exception e) {
 						e.printStackTrace();

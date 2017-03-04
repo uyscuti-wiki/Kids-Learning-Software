@@ -26,6 +26,7 @@ public class WelcomeModule extends JFrame {
     private JButton alphabets_btn, colors_btn, numbers_btn, wanimals_btn, danimals_btn, birds_btn, fruits_btn, vegetables_btn, flowers_btn;
     private CardLayout cardLayout = new CardLayout();
     private JMenuBar menuBar;
+    private JLabel lblNewLabel;
     
 
     public WelcomeModule() {
@@ -126,6 +127,7 @@ public class WelcomeModule extends JFrame {
         
         new Alphabets(alphabets_jp);
         cardPanel.add(alphabets_jp, "2");
+       
              
         getContentPane().add(cardPanel, BorderLayout.CENTER);
         
