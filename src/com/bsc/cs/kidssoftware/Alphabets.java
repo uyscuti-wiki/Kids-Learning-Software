@@ -152,7 +152,7 @@ public class Alphabets {
 				.addGap(5).addContainerGap(43, Short.MAX_VALUE)));
 		alphabets_jp.setLayout(gl_panel1);
 		
-		final JLabel lblNewLabel_1 = new JLabel();//thanks! np.. make sure to fill assets with  C D etc.. yeah I will! wait tha ts it? Is there something I can do to auto commit to git? from eclipse? yes
+		final JLabel lblNewLabel_1 = new JLabel();
 
 		for (int i = 0; i < alphabets.length; i++) {
 			final int n = i;
