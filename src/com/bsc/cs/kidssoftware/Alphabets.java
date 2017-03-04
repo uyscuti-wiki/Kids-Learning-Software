@@ -24,6 +24,7 @@ public class Alphabets {
 	private JLabel label = new JLabel("Kid's Learning Software");
 	private String[] names = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
 			"S", "T", "U", "V", "W", "X", "Y", "Z" };
+	private JLabel lblNewLabel_1 = new JLabel();
 
 	public Alphabets(JPanel alphabets_jp) {
 
@@ -95,9 +96,13 @@ public class Alphabets {
 										GroupLayout.PREFERRED_SIZE)))
 				.addContainerGap(50, Short.MAX_VALUE))
 				.addGroup(gl_panel1.createSequentialGroup().addContainerGap(201, Short.MAX_VALUE).addComponent(label)
-						.addGap(193)));
-		gl_panel1.setVerticalGroup(gl_panel1.createParallelGroup(Alignment.LEADING).addGroup(gl_panel1
-				.createSequentialGroup().addGap(20).addComponent(label).addContainerGap()
+						.addGap(193))
+		);
+		gl_panel1.setVerticalGroup(gl_panel1.createParallelGroup(Alignment.LEADING)
+				.addGroup(gl_panel1.createSequentialGroup()
+				.addGap(15)
+						.addComponent(label)
+				.addContainerGap()
 				.addGroup(gl_panel1.createParallelGroup(Alignment.BASELINE)
 						.addComponent(alphabets[0], GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
 						.addComponent(alphabets[13], GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
@@ -149,12 +154,13 @@ public class Alphabets {
 				.addGroup(gl_panel1.createParallelGroup(Alignment.BASELINE)
 						.addComponent(alphabets[12], GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE)
 						.addComponent(alphabets[25], GroupLayout.PREFERRED_SIZE, 25, GroupLayout.PREFERRED_SIZE))
-				.addGap(5).addContainerGap(43, Short.MAX_VALUE)));
+				.addGap(5)
+				.addContainerGap(43, Short.MAX_VALUE))
+		);
 		alphabets_jp.setLayout(gl_panel1);
-		
-		final JLabel lblNewLabel_1 = new JLabel();
 
 		for (int i = 0; i < alphabets.length; i++) {
+			
 			final int n = i;
 
 			alphabets[i].addActionListener(new ActionListener() {

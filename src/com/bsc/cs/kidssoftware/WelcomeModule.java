@@ -18,6 +18,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 
 public class WelcomeModule extends JFrame {
 
@@ -26,7 +28,8 @@ public class WelcomeModule extends JFrame {
     private JButton alphabets_btn, colors_btn, numbers_btn, wanimals_btn, danimals_btn, birds_btn, fruits_btn, vegetables_btn, flowers_btn;
     private CardLayout cardLayout = new CardLayout();
     private JMenuBar menuBar;
-    private JLabel lblNewLabel;
+    private JMenu mnFile;
+    private JMenuItem mntmBack;
     
 
     public WelcomeModule() {
@@ -40,7 +43,17 @@ public class WelcomeModule extends JFrame {
         
         setTitle("Kid's Learning Software");
         setSize(752, 496);
-
+        
+        menuBar = new JMenuBar();
+        setJMenuBar(menuBar);
+        
+        mnFile = new JMenu("File");
+        menuBar.add(mnFile);
+        
+        mntmBack = new JMenuItem("Back");
+        mntmBack.setHorizontalAlignment(SwingConstants.CENTER);
+        mnFile.add(mntmBack);
+        
         welcome_jp = new JPanel();
         alphabets_jp = new JPanel();
         numbers_jp = new JPanel();
@@ -77,17 +90,16 @@ public class WelcomeModule extends JFrame {
         				.addComponent(wanimals_btn, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
         				.addComponent(fruits_btn, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE))
         			.addGap(130)
-        			.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
+        			.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
         				.addComponent(danimals_btn, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        				.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
-        					.addComponent(colors_btn, GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
-        					.addComponent(vegetables_btn, GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)))
-        			.addPreferredGap(ComponentPlacement.RELATED, 149, Short.MAX_VALUE)
-        			.addGroup(gl_panel.createParallelGroup(Alignment.TRAILING)
+        				.addComponent(colors_btn, GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
+        				.addComponent(vegetables_btn, GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE))
+        			.addPreferredGap(ComponentPlacement.RELATED, 133, Short.MAX_VALUE)
+        			.addGroup(gl_panel.createParallelGroup(Alignment.LEADING)
         				.addComponent(numbers_btn, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
         				.addComponent(birds_btn, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
         				.addComponent(flowers_btn, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE))
-        			.addContainerGap(65, Short.MAX_VALUE))
+        			.addGap(81))
         		.addGroup(gl_panel.createSequentialGroup()
         			.addContainerGap(214, Short.MAX_VALUE)
         			.addComponent(label)
@@ -127,12 +139,78 @@ public class WelcomeModule extends JFrame {
         
         new Alphabets(alphabets_jp);
         cardPanel.add(alphabets_jp, "2");
-       
-             
+        
+        numbers_btn.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(cardPanel, "3");
+            }
+        });
+        
+        new Numbers(numbers_jp);
+        cardPanel.add(numbers_jp, "3");
+        
+        colors_btn.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(cardPanel, "4");
+            }
+        });
+        
+        new Colors(colors_jp);
+        cardPanel.add(colors_jp, "4");
+        
+        alphabets_btn.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(cardPanel, "2");
+            }
+        });
+
+        alphabets_btn.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(cardPanel, "2");
+            }
+        });
+        
+        alphabets_btn.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(cardPanel, "2");
+            }
+        });
+        
+        alphabets_btn.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(cardPanel, "2");
+            }
+        });
+        
+        alphabets_btn.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(cardPanel, "2");
+            }
+        });
+        
+        alphabets_btn.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(cardPanel, "2");
+            }
+        });
+        
+        mntmBack.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(cardPanel, "1");
+            }
+        });
+                 
         getContentPane().add(cardPanel, BorderLayout.CENTER);
         
-        menuBar = new JMenuBar();
-        setJMenuBar(menuBar);
     }
 
     public static void main(String[] args) {
