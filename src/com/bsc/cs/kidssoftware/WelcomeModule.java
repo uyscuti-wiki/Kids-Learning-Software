@@ -135,38 +135,41 @@ public class WelcomeModule extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 cardLayout.show(cardPanel, "2");
             }
-        });
-        
+        });      
         new Alphabets(alphabets_jp);
         cardPanel.add(alphabets_jp, "2");
+        
         
         numbers_btn.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
                 cardLayout.show(cardPanel, "3");
             }
-        });
-        
+        });        
         new Numbers(numbers_jp);
         cardPanel.add(numbers_jp, "3");
+        
         
         colors_btn.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
                 cardLayout.show(cardPanel, "4");
             }
-        });
-        
+        }); 
         new Colors(colors_jp);
         cardPanel.add(colors_jp, "4");
+      
         
-        alphabets_btn.addActionListener(new ActionListener() {
+        birds_btn.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                cardLayout.show(cardPanel, "2");
+                cardLayout.show(cardPanel, "5");
             }
         });
-
+        new Birds(birds_jp);
+        cardPanel.add(birds_jp, "5");
+        
+        
         alphabets_btn.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {

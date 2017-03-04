@@ -21,7 +21,7 @@ import javax.swing.SwingConstants;
 public class Alphabets {
 
 	private JButton[] alphabets = new JButton[26];
-	private JLabel label = new JLabel("Kid's Learning Software");
+	private JLabel label = new JLabel("Alphabets");
 	private String[] names = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
 			"S", "T", "U", "V", "W", "X", "Y", "Z" };
 	private JLabel lblNewLabel_1 = new JLabel();
@@ -96,7 +96,7 @@ public class Alphabets {
 										GroupLayout.PREFERRED_SIZE)))
 				.addContainerGap(50, Short.MAX_VALUE))
 				.addGroup(gl_panel1.createSequentialGroup().addContainerGap(201, Short.MAX_VALUE).addComponent(label)
-						.addGap(193))
+						.addGap(325))
 		);
 		gl_panel1.setVerticalGroup(gl_panel1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel1.createSequentialGroup()

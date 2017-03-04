@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 import javax.imageio.ImageIO;
-import javax.swing.BorderFactory;
+import javax.swing.BorderFactory; 
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
 import javax.swing.GroupLayout.Alignment;
@@ -22,7 +22,7 @@ import javax.swing.SwingConstants;
 public class Numbers {
 	
 	private JButton[] numbers = new JButton[10];
-	private JLabel label = new JLabel("Kid's Learning Software");
+	private JLabel label = new JLabel("Numbers");
 	private String[] names = { "Zero - 0", "One - 1", "Two - 2", "Three - 3", "Four - 4", "Five - 5", "Six - 6", "Seven - 7", "Eight - 8", "Nine - 9"};
 	private JLabel lblNewLabel_1 = new JLabel();
 	
@@ -59,8 +59,9 @@ public class Numbers {
 							.addComponent(numbers[9], GroupLayout.PREFERRED_SIZE, 55, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(99, Short.MAX_VALUE)
 				.addContainerGap(50, Short.MAX_VALUE))
-				.addGroup(gl_panel_1.createSequentialGroup().addContainerGap(201, Short.MAX_VALUE).addComponent(label)
-						.addGap(193))
+				.addGroup(gl_panel_1.createSequentialGroup().addContainerGap(201, Short.MAX_VALUE)
+						.addComponent(label)
+						.addGap(325))
 		);
 		gl_panel_1.setVerticalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
