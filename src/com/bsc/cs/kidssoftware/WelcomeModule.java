@@ -208,6 +208,7 @@ public class WelcomeModule extends JFrame {
         mntmBack.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
+            	Alphabets.clip.stop();
                 cardLayout.show(cardPanel, "1");
             }
         });

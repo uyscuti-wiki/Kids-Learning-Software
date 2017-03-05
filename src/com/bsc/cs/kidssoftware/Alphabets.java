@@ -28,7 +28,7 @@ public class Alphabets {
 	private String[] names = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
 			"S", "T", "U", "V", "W", "X", "Y", "Z" };
 	private JLabel lblNewLabel_1 = new JLabel();
-	private Clip clip;
+	public static Clip clip;
 	private Boolean clipCheck = false;
 	
 	public Alphabets(JPanel alphabets_jp) {
@@ -190,14 +190,13 @@ public class Alphabets {
 										.addContainerGap(100, Short.MAX_VALUE))
 						);
 						new Thread(new Runnable() {
-							  // The wrapper thread is unnecessary, unless it blocks on the
-							  // Clip finishing; see comments.
+
 							    public void run() {
 							      try {
 							    	if(clipCheck)
 							    		clip.stop();
 							        clip = AudioSystem.getClip();							        
-							        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Alphabets.class.getResourceAsStream("Placeholder.wav"));
+							        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Alphabets.class.getResourceAsStream("/assets/Placeholder.wav"));
 							        clip.open(inputStream);
 							        clip.start(); 
 							        clipCheck = true;
@@ -207,7 +206,7 @@ public class Alphabets {
 							      }
 							    }
 							  }).start();
-						  
+				
 						alphabets_jp.setLayout(gl_panel1);
 					} 
 					catch (Exception e) {
@@ -216,7 +215,6 @@ public class Alphabets {
 				}
 		});
 		}
-
 	}
 
 }
