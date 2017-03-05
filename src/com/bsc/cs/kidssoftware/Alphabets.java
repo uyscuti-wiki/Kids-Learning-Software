@@ -9,6 +9,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
@@ -25,7 +28,9 @@ public class Alphabets {
 	private String[] names = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
 			"S", "T", "U", "V", "W", "X", "Y", "Z" };
 	private JLabel lblNewLabel_1 = new JLabel();
-
+	private Clip clip;
+	private Boolean clipCheck = false;
+	
 	public Alphabets(JPanel alphabets_jp) {
 
 		label.setHorizontalAlignment(SwingConstants.CENTER);
@@ -184,12 +189,32 @@ public class Alphabets {
 										.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 350, GroupLayout.PREFERRED_SIZE)
 										.addContainerGap(100, Short.MAX_VALUE))
 						);
+						new Thread(new Runnable() {
+							  // The wrapper thread is unnecessary, unless it blocks on the
+							  // Clip finishing; see comments.
+							    public void run() {
+							      try {
+							    	if(clipCheck)
+							    		clip.stop();
+							        clip = AudioSystem.getClip();							        
+							        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Alphabets.class.getResourceAsStream("Placeholder.wav"));
+							        clip.open(inputStream);
+							        clip.start(); 
+							        clipCheck = true;
+							      } 
+							      catch (Exception e) {
+							        e.printStackTrace();
+							      }
+							    }
+							  }).start();
+						  
 						alphabets_jp.setLayout(gl_panel1);
-					} catch (Exception e) {
+					} 
+					catch (Exception e) {
 						e.printStackTrace();
 					}
 				}
-			});
+		});
 		}
 
 	}
