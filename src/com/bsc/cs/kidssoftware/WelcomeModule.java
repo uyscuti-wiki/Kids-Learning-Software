@@ -226,12 +226,14 @@ public class WelcomeModule extends JFrame {
         new Vegetables(vegetables_jp);
         cardPanel.add(vegetables_jp, "9");
         
-        alphabets_btn.addActionListener(new ActionListener() {
+        flowers_btn.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                cardLayout.show(cardPanel, "2");
+                cardLayout.show(cardPanel, "10");
             }
         });
+        new Flowers(flowers_jp);
+        cardPanel.add(flowers_jp, "10");
         
         mntmBack.addActionListener(new ActionListener() {
 
@@ -254,6 +256,8 @@ public class WelcomeModule extends JFrame {
                 				Fruits.clip.stop();	
                 			else if(((JPanel) c).getName() == "Vegetables")
                 				Vegetables.clip.stop();	
+                			else if(((JPanel) c).getName() == "Flowers")
+                				Flowers.clip.stop();
                 		}
                 		
                 }
