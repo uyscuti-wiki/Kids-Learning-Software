@@ -26,7 +26,7 @@ public class Birds {
 	private JLabel label = new JLabel("Birds");
 	private String[] names = { "Dove", "Eagle", "Parrot", "Peacock", "Sparrow", "Woodpecker"};
 	private JLabel lblNewLabel_1 = new JLabel();
-	public static Clip clip;
+	protected static Clip clip;
 	private Boolean clipCheck = false;
 	
 	public Birds(JPanel birds_jp){

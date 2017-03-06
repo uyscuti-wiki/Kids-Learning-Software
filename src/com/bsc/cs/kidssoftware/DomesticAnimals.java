@@ -20,43 +20,42 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingConstants;
 
-public class WildAnimals {
-	
-	private JButton[] wanimals = new JButton[6];
-	private JLabel label = new JLabel("Wild Animals");
-	private String[] names = { "Elephant", "Giraffe", "Leopard", "Lion", "Polar bear", "Tiger"};
+public class DomesticAnimals {
+	private JButton[] danimals = new JButton[6];
+	private JLabel label = new JLabel("Domestic Animals");
+	private String[] names = { "Cat", "Cow", "Dog", "Donkey", "Goat", "Pig"};
 	private JLabel lblNewLabel_1 = new JLabel();
 	protected static Clip clip;
 	private Boolean clipCheck = false;
 	
-	public WildAnimals(JPanel wanimals_jp){
+	public DomesticAnimals(JPanel danimals_jp){
 
 		label.setHorizontalAlignment(SwingConstants.CENTER);
 		label.setForeground(Color.BLUE);
 		label.setFont(new Font("Times New Roman", Font.PLAIN, 34));
 
-		for (int i = 0; i < wanimals.length; i++)
-				wanimals[i] = new JButton(names[i]);
+		for (int i = 0; i < danimals.length; i++)
+				danimals[i] = new JButton(names[i]);
 		
-		GroupLayout gl_panel_1 = new GroupLayout(wanimals_jp);
+		GroupLayout gl_panel_1 = new GroupLayout(danimals_jp);
 		gl_panel_1.setHorizontalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
 				.addGroup(gl_panel_1.createSequentialGroup()
 					.addGap(60)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.TRAILING)
-						.addComponent(wanimals[0], GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-						.addComponent(wanimals[1], GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-						.addComponent(wanimals[2], GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
+						.addComponent(danimals[0], GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+						.addComponent(danimals[1], GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+						.addComponent(danimals[2], GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
 					.addGap(18)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addComponent(wanimals[3], GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-						.addComponent(wanimals[4], GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
-						.addComponent(wanimals[5], GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
+						.addComponent(danimals[3], GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+						.addComponent(danimals[4], GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE)
+						.addComponent(danimals[5], GroupLayout.PREFERRED_SIZE, 130, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(496, Short.MAX_VALUE)
 					.addContainerGap(50, Short.MAX_VALUE))
 					.addGroup(gl_panel_1.createSequentialGroup().addContainerGap(201, Short.MAX_VALUE)
 							.addComponent(label)
-							.addGap(275))
+							.addGap(350))
 		);
 		gl_panel_1.setVerticalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -65,25 +64,25 @@ public class WildAnimals {
 						.addComponent(label)
 					.addContainerGap(115, Short.MAX_VALUE)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addComponent(wanimals[0], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-						.addComponent(wanimals[3], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
+						.addComponent(danimals[0], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+						.addComponent(danimals[3], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
 					.addGap(67)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addComponent(wanimals[1], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-						.addComponent(wanimals[4], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
+						.addComponent(danimals[1], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+						.addComponent(danimals[4], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
 					.addGap(66)
 					.addGroup(gl_panel_1.createParallelGroup(Alignment.LEADING)
-						.addComponent(wanimals[2], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
-						.addComponent(wanimals[5], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
+						.addComponent(danimals[2], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE)
+						.addComponent(danimals[5], GroupLayout.PREFERRED_SIZE, 48, GroupLayout.PREFERRED_SIZE))
 					.addContainerGap(131, Short.MAX_VALUE))
 		);
-		wanimals_jp.setLayout(gl_panel_1);
+		danimals_jp.setLayout(gl_panel_1);
 		
-		for (int i = 0; i < wanimals.length; i++) {
+		for (int i = 0; i < danimals.length; i++) {
 			
 			final int n = i;
 		
-			wanimals[i].addActionListener(new ActionListener() {
+			danimals[i].addActionListener(new ActionListener() {
 
 				public void actionPerformed(ActionEvent ae) {
 					try {
@@ -124,7 +123,7 @@ public class WildAnimals {
 						    }
 						  }).start();
 
-						wanimals_jp.setLayout(gl_panel_1);
+						danimals_jp.setLayout(gl_panel_1);
 					
 					} 
 					catch (Exception e) {

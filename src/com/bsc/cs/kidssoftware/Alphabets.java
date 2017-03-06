@@ -28,7 +28,7 @@ public class Alphabets {
 	private String[] names = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
 			"S", "T", "U", "V", "W", "X", "Y", "Z" };
 	private JLabel lblNewLabel_1 = new JLabel();
-	public static Clip clip;
+	protected static Clip clip;
 	private Boolean clipCheck = false;
 	
 	public Alphabets(JPanel alphabets_jp) {
