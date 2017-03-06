@@ -31,6 +31,7 @@ public class WelcomeModule extends JFrame {
     private JMenuBar menuBar;
     private JMenu mnFile;
     private JMenuItem mntmBack;
+    private JMenuItem mntmNewMenuItem;
     
 
     public WelcomeModule() {
@@ -52,9 +53,12 @@ public class WelcomeModule extends JFrame {
         mnFile = new JMenu("File");
         menuBar.add(mnFile);
         
-        mntmBack = new JMenuItem("Back");
+        mntmBack = new JMenuItem("Home");
         mntmBack.setHorizontalAlignment(SwingConstants.CENTER);
         mnFile.add(mntmBack);
+        
+        mntmNewMenuItem = new JMenuItem("Exit");
+        mnFile.add(mntmNewMenuItem);
         
         welcome_jp = new JPanel();
         cardPanel.add(welcome_jp, "1");
@@ -266,6 +270,13 @@ public class WelcomeModule extends JFrame {
                 cardLayout.show(cardPanel, "1");       
             }
 
+        });
+        
+        mntmNewMenuItem.addActionListener(new ActionListener() {
+        	@Override
+        	public void actionPerformed(ActionEvent ae) {
+        		System.exit(0);
+        	}
         });
                  
         getContentPane().add(cardPanel, BorderLayout.CENTER);
