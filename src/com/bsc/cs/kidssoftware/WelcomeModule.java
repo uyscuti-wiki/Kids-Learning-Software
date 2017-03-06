@@ -3,6 +3,7 @@ package com.bsc.cs.kidssoftware;
 import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
@@ -42,6 +43,7 @@ public class WelcomeModule extends JFrame {
         label.setFont(new Font("Times New Roman", Font.PLAIN, 34));
         
         setTitle("Kid's Learning Software");
+
         setSize(752, 496);
         
         menuBar = new JMenuBar();
@@ -55,17 +57,34 @@ public class WelcomeModule extends JFrame {
         mnFile.add(mntmBack);
         
         welcome_jp = new JPanel();
-        alphabets_jp = new JPanel();
-        numbers_jp = new JPanel();
-        colors_jp = new JPanel();
-        wanimals_jp = new JPanel();
-        danimals_jp = new JPanel();
-        birds_jp = new JPanel();
-        fruits_jp = new JPanel();
-        vegetables_jp = new JPanel();
-        flowers_jp = new JPanel();
-        
         cardPanel.add(welcome_jp, "1");
+        
+        alphabets_jp = new JPanel();
+        alphabets_jp.setName("Alphabets");
+        
+        numbers_jp = new JPanel();
+        numbers_jp.setName("Numbers");
+        
+        colors_jp = new JPanel();
+        colors_jp.setName("Colors");
+        
+        wanimals_jp = new JPanel();
+        wanimals_jp.setName("WildAnimals");
+        
+        danimals_jp = new JPanel();
+        danimals_jp.setName("DomesticAnimals");
+        
+        birds_jp = new JPanel();
+        birds_jp.setName("Birds");
+        
+        fruits_jp = new JPanel();
+        fruits_jp.setName("Fruits");
+        
+        vegetables_jp = new JPanel();
+        vegetables_jp.setName("Vegetables");
+        
+        flowers_jp = new JPanel();
+        flowers_jp.setName("Flowers");        
         
         alphabets_btn = new JButton("Alphabets");
         colors_btn = new JButton("Colors");
@@ -170,12 +189,15 @@ public class WelcomeModule extends JFrame {
         cardPanel.add(birds_jp, "5");
         
         
-        alphabets_btn.addActionListener(new ActionListener() {
+        wanimals_btn.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                cardLayout.show(cardPanel, "2");
+                cardLayout.show(cardPanel, "6");
             }
         });
+        new WildAnimals(wanimals_jp);
+        cardPanel.add(wanimals_jp, "6");
+        
         
         alphabets_btn.addActionListener(new ActionListener() {
 
@@ -208,9 +230,24 @@ public class WelcomeModule extends JFrame {
         mntmBack.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-            	Alphabets.clip.stop();
-                cardLayout.show(cardPanel, "1");
+            	
+            	for(Component c : cardPanel.getComponents()) {
+                	
+                		if(c.isVisible()) {
+                			if(((JPanel) c).getName() == "Alphabets")
+                				Alphabets.clip.stop();
+                			else if(((JPanel) c).getName() == "Numbers")
+                				Numbers.clip.stop();
+                			else if(((JPanel) c).getName() == "Birds")
+                				Birds.clip.stop();
+                			else if(((JPanel) c).getName() == "WildAnimals")
+                				WildAnimals.clip.stop();
+                		}
+                		
+                }
+                cardLayout.show(cardPanel, "1");       
             }
+
         });
                  
         getContentPane().add(cardPanel, BorderLayout.CENTER);

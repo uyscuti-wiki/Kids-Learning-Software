@@ -9,6 +9,9 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.BorderFactory; 
 import javax.swing.GroupLayout;
 import javax.swing.ImageIcon;
@@ -24,6 +27,8 @@ public class Numbers {
 	private JButton[] numbers = new JButton[10];
 	private JLabel label = new JLabel("Numbers");
 	private String[] names = { "Zero - 0", "One - 1", "Two - 2", "Three - 3", "Four - 4", "Five - 5", "Six - 6", "Seven - 7", "Eight - 8", "Nine - 9"};
+	public static Clip clip;
+	private Boolean clipCheck = false;
 	private JLabel lblNewLabel_1 = new JLabel();
 	
 	public Numbers(JPanel numbers_jp){
@@ -117,7 +122,24 @@ public class Numbers {
 										.addComponent(lblNewLabel_1, GroupLayout.PREFERRED_SIZE, 350, GroupLayout.PREFERRED_SIZE)
 										.addContainerGap(150, Short.MAX_VALUE))
 						);
-						
+						new Thread(new Runnable() {
+
+						    public void run() {
+						      try {
+						    	if(clipCheck)
+						    		clip.stop();
+						        clip = AudioSystem.getClip();							        
+						        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Alphabets.class.getResourceAsStream("/assets/Placeholder.wav"));
+						        clip.open(inputStream);
+						        clip.start(); 
+						        clipCheck = true;
+						      } 
+						      catch (Exception e) {
+						        e.printStackTrace();
+						      }
+						    }
+						  }).start();
+			
 						numbers_jp.setLayout(gl_panel_1);
 					
 					} 
