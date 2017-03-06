@@ -55,7 +55,7 @@ public class DomesticAnimals {
 					.addContainerGap(50, Short.MAX_VALUE))
 					.addGroup(gl_panel_1.createSequentialGroup().addContainerGap(201, Short.MAX_VALUE)
 							.addComponent(label)
-							.addGap(350))
+							.addGap(250))
 		);
 		gl_panel_1.setVerticalGroup(
 			gl_panel_1.createParallelGroup(Alignment.LEADING)

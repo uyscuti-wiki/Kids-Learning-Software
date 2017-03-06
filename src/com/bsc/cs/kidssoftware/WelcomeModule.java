@@ -208,12 +208,14 @@ public class WelcomeModule extends JFrame {
         new DomesticAnimals(danimals_jp);
         cardPanel.add(danimals_jp, "7");
         
-        alphabets_btn.addActionListener(new ActionListener() {
+        fruits_btn.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                cardLayout.show(cardPanel, "2");
+                cardLayout.show(cardPanel, "8");
             }
         });
+        new Fruits(fruits_jp);
+        cardPanel.add(fruits_jp, "8");
         
         alphabets_btn.addActionListener(new ActionListener() {
 
@@ -245,7 +247,9 @@ public class WelcomeModule extends JFrame {
                 			else if(((JPanel) c).getName() == "WildAnimals")
                 				WildAnimals.clip.stop();
                 			else if(((JPanel) c).getName() == "DomesticAnimals")
-                				DomesticAnimals.clip.stop();	
+                				DomesticAnimals.clip.stop();
+                			else if(((JPanel) c).getName() == "Fruits")
+                				Fruits.clip.stop();	
                 		}
                 		
                 }
