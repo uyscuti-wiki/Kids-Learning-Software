@@ -258,6 +258,8 @@ public class WelcomeModule extends JFrame {
                 				Vegetables.clip.stop();	
                 			else if(((JPanel) c).getName() == "Flowers")
                 				Flowers.clip.stop();
+                			else if(((JPanel) c).getName() == "Colors")
+                				Colors.clip.stop();
                 		}
                 		
                 }
