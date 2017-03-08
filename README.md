@@ -14,4 +14,4 @@ Language: Java (Swing)
 
 (Or)
 
-1. Just download the .jar/.exe files from [this link](http://ge.tt/5hSIjAj2)
+1. Just download the .jar/.exe files from [this link](http://ge.tt/5hSIjAj2) (Note:- May not actively reflect changes last updated on 08.03.2017)
