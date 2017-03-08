@@ -23,7 +23,7 @@ import javax.swing.GroupLayout.Alignment;
 public class Fruits {
 	private JButton[] fruits = new JButton[6];
 	private JLabel label = new JLabel("Fruits");
-	private String[] names = { "Apple", "Banana", "Grapes", "Guava", "Kiwi", "Pomegranate"};
+	private String[] names = { "Apple", "Banana", "Grape", "Guava", "Kiwi", "Pomegranate"};
 	private JLabel lblNewLabel_1 = new JLabel();
 	protected static Clip clip;
 	private Boolean clipCheck = false;
@@ -112,7 +112,7 @@ public class Fruits {
 							    	if(clipCheck)
 							    		clip.stop();
 							        clip = AudioSystem.getClip();							        
-							        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Alphabets.class.getResourceAsStream("/assets/Placeholder.wav"));
+							        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Alphabets.class.getResourceAsStream("/assets/" + names[n] + ".wav"));
 							        clip.open(inputStream);
 							        clip.start(); 
 							        clipCheck = true;

@@ -112,7 +112,7 @@ public class DomesticAnimals {
 						    	if(clipCheck)
 						    		clip.stop();
 						        clip = AudioSystem.getClip();							        
-						        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Alphabets.class.getResourceAsStream("/assets/Placeholder.wav"));
+						        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Alphabets.class.getResourceAsStream("/assets/" + names[n] + ".wav"));
 						        clip.open(inputStream);
 						        clip.start(); 
 						        clipCheck = true;

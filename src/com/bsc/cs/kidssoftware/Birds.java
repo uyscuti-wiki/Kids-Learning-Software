@@ -24,7 +24,7 @@ public class Birds {
 	
 	private JButton[] birds = new JButton[6];
 	private JLabel label = new JLabel("Birds");
-	private String[] names = { "Dove", "Eagle", "Parrot", "Peacock", "Sparrow", "Woodpecker"};
+	private String[] names = {"Dove", "Eagle", "Parrot", "Peacock", "Sparrow", "Woodpecker"};
 	private JLabel lblNewLabel_1 = new JLabel();
 	protected static Clip clip;
 	private Boolean clipCheck = false;
@@ -114,7 +114,7 @@ public class Birds {
 						    	if(clipCheck)
 						    		clip.stop();
 						        clip = AudioSystem.getClip();							        
-						        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Alphabets.class.getResourceAsStream("/assets/Placeholder.wav"));
+						        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Alphabets.class.getResourceAsStream("/assets/" + names[n] + ".wav"));
 						        clip.open(inputStream);
 						        clip.start(); 
 						        clipCheck = true;
