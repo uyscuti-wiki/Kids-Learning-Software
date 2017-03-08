@@ -129,7 +129,7 @@ public class Numbers {
 						    	if(clipCheck)
 						    		clip.stop();
 						        clip = AudioSystem.getClip();							        
-						        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Alphabets.class.getResourceAsStream("/assets/Placeholder.wav"));
+						        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Alphabets.class.getResourceAsStream("/assets/"+ n +".wav"));
 						        clip.open(inputStream);
 						        clip.start(); 
 						        clipCheck = true;
