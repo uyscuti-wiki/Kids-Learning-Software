@@ -6,7 +6,6 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
-import java.io.File;
 
 import javax.imageio.ImageIO;
 import javax.sound.sampled.AudioInputStream;
@@ -173,7 +172,7 @@ public class Alphabets {
 				public void actionPerformed(ActionEvent ae) {
 					try {
 
-						BufferedImage img = ImageIO.read(new File("assets/" + names[n] + ".jpg"));
+						BufferedImage img = ImageIO.read(Alphabets.class.getResource("/assets/" + names[n] + ".jpg")); 
 						Image dimg = img.getScaledInstance(325, 350, Image.SCALE_SMOOTH);
 						ImageIcon imageIcon = new ImageIcon(dimg);
 						lblNewLabel_1.setIcon(imageIcon);
@@ -196,7 +195,7 @@ public class Alphabets {
 							    	if(clipCheck)
 							    		clip.stop();
 							        clip = AudioSystem.getClip();							        
-							        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Alphabets.class.getResourceAsStream("/assets/"+ names[n] +".wav"));
+							        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Alphabets.class.getResource("/assets/"+ names[n] +".wav"));
 							        clip.open(inputStream);
 							        clip.start(); 
 							        clipCheck = true;
