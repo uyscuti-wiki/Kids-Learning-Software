@@ -25,7 +25,7 @@ import javax.swing.SwingConstants;
 
 public class WelcomeModule extends JFrame {
 
-    private static final long serialVersionUID = 1;
+    private static final long serialVersionUID = 1L;
     private JPanel cardPanel, welcome_jp, alphabets_jp, numbers_jp, colors_jp, wanimals_jp, danimals_jp, birds_jp, fruits_jp, vegetables_jp, flowers_jp;
     private JButton alphabets_btn, colors_btn, numbers_btn, wanimals_btn, danimals_btn, birds_btn, fruits_btn, vegetables_btn, flowers_btn;
     private CardLayout cardLayout = new CardLayout();
