@@ -15,12 +15,13 @@ import javax.swing.GroupLayout.Alignment;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
 import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.SwingConstants;
-import javax.swing.JMenu;
-import javax.swing.JMenuItem;
 
 public class WelcomeModule extends JFrame {
 
@@ -48,6 +49,7 @@ public class WelcomeModule extends JFrame {
         setSize(752, 496);
         
         menuBar = new JMenuBar();
+        menuBar.setBackground(new Color(255, 222, 173));
         setJMenuBar(menuBar);
         
         mnFile = new JMenu("File");
@@ -61,33 +63,43 @@ public class WelcomeModule extends JFrame {
         mnFile.add(mntmNewMenuItem);
         
         welcome_jp = new JPanel();
+        welcome_jp.setBackground(new Color(147, 112, 219));
         cardPanel.add(welcome_jp, "1");
         
         alphabets_jp = new JPanel();
+        alphabets_jp.setBackground(new Color(147, 112, 219));
         alphabets_jp.setName("Alphabets");
         
         numbers_jp = new JPanel();
+        numbers_jp.setBackground(new Color(147, 112, 219));
         numbers_jp.setName("Numbers");
         
         colors_jp = new JPanel();
+        colors_jp.setBackground(new Color(147, 112, 219));
         colors_jp.setName("Colors");
         
         wanimals_jp = new JPanel();
+        wanimals_jp.setBackground(new Color(147, 112, 219));
         wanimals_jp.setName("WildAnimals");
         
         danimals_jp = new JPanel();
+        danimals_jp.setBackground(new Color(147, 112, 219));
         danimals_jp.setName("DomesticAnimals");
         
         birds_jp = new JPanel();
+        birds_jp.setBackground(new Color(147, 112, 219));
         birds_jp.setName("Birds");
         
         fruits_jp = new JPanel();
+        fruits_jp.setBackground(new Color(147, 112, 219));
         fruits_jp.setName("Fruits");
         
         vegetables_jp = new JPanel();
+        vegetables_jp.setBackground(new Color(147, 112, 219));
         vegetables_jp.setName("Vegetables");
         
         flowers_jp = new JPanel();
+        flowers_jp.setBackground(new Color(147, 112, 219));
         flowers_jp.setName("Flowers");        
         
         alphabets_btn = new JButton("Alphabets");
@@ -275,7 +287,38 @@ public class WelcomeModule extends JFrame {
         mntmNewMenuItem.addActionListener(new ActionListener() {
         	@Override
         	public void actionPerformed(ActionEvent ae) {
-        		System.exit(0);
+        		int option;
+        		option = JOptionPane.showConfirmDialog(rootPane, "Are you sure?");
+        		if(option == 0)
+        			System.exit(0);
+        		else if(option == 1){
+                	for(Component c : cardPanel.getComponents()) {
+                    	
+                		if(c.isVisible()) {
+                			if(((JPanel) c).getName() == "Alphabets")
+                				Alphabets.clip.stop();
+                			else if(((JPanel) c).getName() == "Numbers")
+                				Numbers.clip.stop();
+                			else if(((JPanel) c).getName() == "Birds")
+                				Birds.clip.stop();
+                			else if(((JPanel) c).getName() == "WildAnimals")
+                				WildAnimals.clip.stop();
+                			else if(((JPanel) c).getName() == "DomesticAnimals")
+                				DomesticAnimals.clip.stop();
+                			else if(((JPanel) c).getName() == "Fruits")
+                				Fruits.clip.stop();	
+                			else if(((JPanel) c).getName() == "Vegetables")
+                				Vegetables.clip.stop();	
+                			else if(((JPanel) c).getName() == "Flowers")
+                				Flowers.clip.stop();
+                			else if(((JPanel) c).getName() == "Colors")
+                				Colors.clip.stop();
+                		}
+                		
+                }
+                cardLayout.show(cardPanel, "1");  
+        		}
+        			
         	}
         });
                  
