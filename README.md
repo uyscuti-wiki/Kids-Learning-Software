@@ -16,4 +16,6 @@ Language: Java (Swing)
 
 1. Just download the .jar/.exe files from [this link](http://ge.tt/5hSIjAj2) (Note:- May not actively reflect changes - last updated on 08.03.2017)
 
+##Credits 
+---------------------------------------------------------------
 Credits to the internet, friends and all those who helped me with various bits :)
