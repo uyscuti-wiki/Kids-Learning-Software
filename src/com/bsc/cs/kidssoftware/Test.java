@@ -124,11 +124,11 @@ public class Test {
 		while(randomfileint_history.contains(randomfileint))
 				randomfileint = 2 * r.nextInt(files.length / 2);
 		File file = files[randomfileint];
-		File file2;
+		/*File file2;
 		if(file.getName().contains(".jpg"))
 			file2 = files[randomfileint+1];
 		else
-			file2 = files[randomfileint-1];
+			file2 = files[randomfileint-1];*/
 		
 		int index = file.getName().indexOf(".");
 		String filename = file.getName().substring(0, index);
