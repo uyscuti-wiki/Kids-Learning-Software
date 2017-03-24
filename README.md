@@ -14,8 +14,8 @@ Language: Java (Swing)
 
 (Or)
 
-1. Just download the .jar/.exe files from [this link](http://ge.tt/5hSIjAj2) (Note:- May not actively reflect changes - last updated on 08.03.2017)
+1. Just download the .exe file from [this link](https://github.com/uyscuti-wiki/Kids-Learning-Software/releases/download/v1.0.1-beta/Kids.Learning.Software.exe) and .jar file from [this link](https://github.com/uyscuti-wiki/Kids-Learning-Software/releases/download/v1.0.1-beta/Kids.Learning.Software.jar)
 
-##Credits 
+## Credits 
 ---------------------------------------------------------------
 Credits to the internet, friends and all those who helped me with various bits :)
