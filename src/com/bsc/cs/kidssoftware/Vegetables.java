@@ -22,7 +22,7 @@ import javax.swing.SwingConstants;
 public class Vegetables {
 	private JButton[] vegetables = new JButton[6];
 	private JLabel label = new JLabel("Vegetables");
-	private String[] names = { "Brinjal", "Capsicum", "Carrot", "Onion", "Pumpkin", "Tomato"};
+	public static String[] veg_names = { "Brinjal", "Capsicum", "Carrot", "Onion", "Pumpkin", "Tomato"};
 	private JLabel lblNewLabel_1 = new JLabel();
 	protected static Clip clip;
 	private Boolean clipCheck = false;
@@ -34,7 +34,7 @@ public class Vegetables {
 			label.setFont(new Font("Times New Roman", Font.PLAIN, 34));
 
 			for (int i = 0; i < vegetables.length; i++)
-					vegetables[i] = new JButton(names[i]);
+					vegetables[i] = new JButton(veg_names[i]);
 			
 			GroupLayout gl_panel_1 = new GroupLayout(vegetables_jp);
 			gl_panel_1.setHorizontalGroup(
@@ -86,7 +86,7 @@ public class Vegetables {
 					public void actionPerformed(ActionEvent ae) {
 						try {
 
-							BufferedImage img = ImageIO.read(Vegetables.class.getResource("/assets/" + names[n] + ".jpg"));
+							BufferedImage img = ImageIO.read(Vegetables.class.getResource("/assets/" + veg_names[n] + ".jpg"));
 							Image dimg = img.getScaledInstance(325, 350, Image.SCALE_SMOOTH);
 							ImageIcon imageIcon = new ImageIcon(dimg);
 							lblNewLabel_1.setIcon(imageIcon);
@@ -111,7 +111,7 @@ public class Vegetables {
 							    	if(clipCheck)
 							    		clip.stop();
 							        clip = AudioSystem.getClip();							        
-							        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Vegetables.class.getResource("/assets/" + names[n] + ".wav"));
+							        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Vegetables.class.getResource("/assets/" + veg_names[n] + ".wav"));
 							        clip.open(inputStream);
 							        clip.start(); 
 							        clipCheck = true;

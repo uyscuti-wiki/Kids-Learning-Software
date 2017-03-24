@@ -23,7 +23,7 @@ public class WildAnimals {
 	
 	private JButton[] wanimals = new JButton[6];
 	private JLabel label = new JLabel("Wild Animals");
-	private String[] names = { "Elephant", "Giraffe", "Leopard", "Lion", "Polar bear", "Tiger"};
+	public static String[] wil_names = { "Elephant", "Giraffe", "Leopard", "Lion", "Polar bear", "Tiger"};
 	private JLabel lblNewLabel_1 = new JLabel();
 	protected static Clip clip;
 	private Boolean clipCheck = false;
@@ -35,7 +35,7 @@ public class WildAnimals {
 		label.setFont(new Font("Times New Roman", Font.PLAIN, 34));
 
 		for (int i = 0; i < wanimals.length; i++)
-				wanimals[i] = new JButton(names[i]);
+				wanimals[i] = new JButton(wil_names[i]);
 		
 		GroupLayout gl_panel_1 = new GroupLayout(wanimals_jp);
 		gl_panel_1.setHorizontalGroup(
@@ -87,7 +87,7 @@ public class WildAnimals {
 				public void actionPerformed(ActionEvent ae) {
 					try {
 
-						BufferedImage img = ImageIO.read(WildAnimals.class.getResource("/assets/" + names[n] + ".jpg"));
+						BufferedImage img = ImageIO.read(WildAnimals.class.getResource("/assets/" + wil_names[n] + ".jpg"));
 						Image dimg = img.getScaledInstance(325, 350, Image.SCALE_SMOOTH);
 						ImageIcon imageIcon = new ImageIcon(dimg);
 						lblNewLabel_1.setIcon(imageIcon);
@@ -112,7 +112,7 @@ public class WildAnimals {
 						    	if(clipCheck)
 						    		clip.stop();
 						        clip = AudioSystem.getClip();							        
-						        AudioInputStream inputStream = AudioSystem.getAudioInputStream(WildAnimals.class.getResource("/assets/" + names[n] + ".wav"));
+						        AudioInputStream inputStream = AudioSystem.getAudioInputStream(WildAnimals.class.getResource("/assets/" + wil_names[n] + ".wav"));
 						        clip.open(inputStream);
 						        clip.start(); 
 						        clipCheck = true;

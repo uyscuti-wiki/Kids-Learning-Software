@@ -4,10 +4,13 @@ import java.awt.BorderLayout;
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Component;
+import java.awt.Desktop;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.net.URI;
 
 import javax.swing.BorderFactory;
 import javax.swing.GroupLayout;
@@ -26,13 +29,18 @@ import javax.swing.SwingConstants;
 public class WelcomeModule extends JFrame {
 
     private static final long serialVersionUID = 1L;
-    private JPanel cardPanel, welcome_jp, alphabets_jp, numbers_jp, colors_jp, wanimals_jp, danimals_jp, birds_jp, fruits_jp, vegetables_jp, flowers_jp;
+    private JPanel cardPanel, welcome_jp, alphabets_jp, numbers_jp, colors_jp, wanimals_jp, danimals_jp, birds_jp, fruits_jp, vegetables_jp, flowers_jp, test_jp;
     private JButton alphabets_btn, colors_btn, numbers_btn, wanimals_btn, danimals_btn, birds_btn, fruits_btn, vegetables_btn, flowers_btn;
     private CardLayout cardLayout = new CardLayout();
     private JMenuBar menuBar;
     private JMenu mnFile;
     private JMenuItem mntmBack;
     private JMenuItem mntmNewMenuItem;
+    private JMenu mnHelp;
+    private JMenuItem mntmNewMenuItem_1;
+    private JMenuItem mntmNewMenuItem_2;
+    private JMenuItem mntmNewMenuItem_3;
+    private JMenuItem mntmNewMenuItem_4;
     
 
     public WelcomeModule() {
@@ -56,11 +64,30 @@ public class WelcomeModule extends JFrame {
         menuBar.add(mnFile);
         
         mntmBack = new JMenuItem("Home");
-        mntmBack.setHorizontalAlignment(SwingConstants.CENTER);
+        mntmBack.setPreferredSize(new Dimension(120, 22));
+        mntmBack.setHorizontalAlignment(SwingConstants.LEFT);
         mnFile.add(mntmBack);
+        
+        mntmNewMenuItem_4 = new JMenuItem("Take the test!");
+        mnFile.add(mntmNewMenuItem_4);
         
         mntmNewMenuItem = new JMenuItem("Exit");
         mnFile.add(mntmNewMenuItem);
+        
+        mnHelp = new JMenu("Help");
+        menuBar.add(mnHelp);
+        
+        mntmNewMenuItem_1 = new JMenuItem("Documentation");
+        mntmNewMenuItem_1.setPreferredSize(new Dimension(120, 22));
+        mnHelp.add(mntmNewMenuItem_1);
+        
+        mntmNewMenuItem_2 = new JMenuItem("About");
+        mntmNewMenuItem_2.setPreferredSize(new Dimension(120, 22));
+        mnHelp.add(mntmNewMenuItem_2);
+        
+        mntmNewMenuItem_3 = new JMenuItem("Credits");
+        mntmNewMenuItem_3.setPreferredSize(new Dimension(120, 22));
+        mnHelp.add(mntmNewMenuItem_3);
         
         welcome_jp = new JPanel();
         welcome_jp.setBackground(new Color(147, 112, 219));
@@ -101,6 +128,10 @@ public class WelcomeModule extends JFrame {
         flowers_jp = new JPanel();
         flowers_jp.setBackground(new Color(147, 112, 219));
         flowers_jp.setName("Flowers");        
+        
+        test_jp = new JPanel();
+        test_jp.setBackground(new Color(147, 112, 219));
+        test_jp.setName("Short Test");
         
         alphabets_btn = new JButton("Alphabets");
         colors_btn = new JButton("Colors");
@@ -284,6 +315,18 @@ public class WelcomeModule extends JFrame {
 
         });
         
+        mntmNewMenuItem_4.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+				cardLayout.show(cardPanel, "11");
+				
+			}
+		});
+        new Test(test_jp);
+        cardPanel.add(test_jp, "11");
+        
         mntmNewMenuItem.addActionListener(new ActionListener() {
         	@Override
         	public void actionPerformed(ActionEvent ae) {
@@ -323,6 +366,21 @@ public class WelcomeModule extends JFrame {
         });
                  
         getContentPane().add(cardPanel, BorderLayout.CENTER);
+        
+        mntmNewMenuItem_1.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent ae) {
+            	try{
+            		
+            		if(Desktop.isDesktopSupported())
+            			Desktop.getDesktop().browse(new URI("http://www.example.com"));
+            	}
+            	catch(Exception e){
+            		e.printStackTrace();
+            	}
+            	
+            }
+        });
         
     }
 

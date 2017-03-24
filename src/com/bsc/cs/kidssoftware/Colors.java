@@ -22,7 +22,7 @@ import javax.swing.SwingConstants;
 public class Colors {
 	private JButton[] colors = new JButton[8];
 	private JLabel label = new JLabel("Colors");
-	private String[] names = { "Black", "Blue", "Green", "Magenta", "Purple", "Red", "White", "Yellow"};
+	public static String[] col_names = { "Black", "Blue", "Green", "Magenta", "Purple", "Red", "White", "Yellow"};
 	private JLabel lblNewLabel_1 = new JLabel();
 	protected static Clip clip;
 	private Boolean clipCheck = false;
@@ -34,7 +34,7 @@ public class Colors {
 			label.setFont(new Font("Times New Roman", Font.PLAIN, 34));
 
 			for (int i = 0; i < colors.length; i++)
-					colors[i] = new JButton(names[i]);
+					colors[i] = new JButton(col_names[i]);
 			
 			GroupLayout gl_panel_1 = new GroupLayout(colors_jp);
 			gl_panel_1.setHorizontalGroup(
@@ -92,7 +92,7 @@ public class Colors {
 					public void actionPerformed(ActionEvent ae) {
 						try {
 
-							BufferedImage img = ImageIO.read(Colors.class.getResource("/assets/" + names[n] + ".jpg"));
+							BufferedImage img = ImageIO.read(Colors.class.getResource("/assets/" + col_names[n] + ".jpg"));
 							Image dimg = img.getScaledInstance(325, 350, Image.SCALE_SMOOTH);
 							ImageIcon imageIcon = new ImageIcon(dimg);
 							lblNewLabel_1.setIcon(imageIcon);
@@ -117,7 +117,7 @@ public class Colors {
 							    	if(clipCheck)
 							    		clip.stop();
 							        clip = AudioSystem.getClip();							        
-							        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Colors.class.getResource("/assets/" + names[n] + ".wav"));
+							        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Colors.class.getResource("/assets/" + col_names[n] + ".wav"));
 							        clip.open(inputStream);
 							        clip.start(); 
 							        clipCheck = true;

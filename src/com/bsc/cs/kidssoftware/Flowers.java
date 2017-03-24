@@ -22,7 +22,7 @@ import javax.swing.SwingConstants;
 public class Flowers {
 	private JButton[] flowers = new JButton[6];
 	private JLabel label = new JLabel("Flowers");
-	private String[] names = { "Jasmine", "Lily", "Lotus", "Rose", "Sunflower", "Tulip"};
+	public static String[] flo_names = { "Jasmine", "Lily", "Lotus", "Rose", "Sunflower", "Tulip"};
 	private JLabel lblNewLabel_1 = new JLabel();
 	protected static Clip clip;
 	private Boolean clipCheck = false;
@@ -34,7 +34,7 @@ public class Flowers {
 			label.setFont(new Font("Times New Roman", Font.PLAIN, 34));
 
 			for (int i = 0; i < flowers.length; i++)
-					flowers[i] = new JButton(names[i]);
+					flowers[i] = new JButton(flo_names[i]);
 			
 			GroupLayout gl_panel_1 = new GroupLayout(flowers_jp);
 			gl_panel_1.setHorizontalGroup(
@@ -86,7 +86,7 @@ public class Flowers {
 					public void actionPerformed(ActionEvent ae) {
 						try {
 
-							BufferedImage img = ImageIO.read(Flowers.class.getResource("/assets/" + names[n] + ".jpg"));
+							BufferedImage img = ImageIO.read(Flowers.class.getResource("/assets/" + flo_names[n] + ".jpg"));
 							Image dimg = img.getScaledInstance(325, 350, Image.SCALE_SMOOTH);
 							ImageIcon imageIcon = new ImageIcon(dimg);
 							lblNewLabel_1.setIcon(imageIcon);
@@ -111,7 +111,7 @@ public class Flowers {
 							    	if(clipCheck)
 							    		clip.stop();
 							        clip = AudioSystem.getClip();							        
-							        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Flowers.class.getResource("/assets/" + names[n] + ".wav"));
+							        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Flowers.class.getResource("/assets/" + flo_names[n] + ".wav"));
 							        clip.open(inputStream);
 							        clip.start(); 
 							        clipCheck = true;

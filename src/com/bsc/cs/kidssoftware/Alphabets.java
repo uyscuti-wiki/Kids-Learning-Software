@@ -24,7 +24,7 @@ public class Alphabets {
 
 	private JButton[] alphabets = new JButton[26];
 	private JLabel label = new JLabel("Alphabets");
-	private String[] names = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
+	public static String[] alp_names = { "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R",
 			"S", "T", "U", "V", "W", "X", "Y", "Z" };
 	private JLabel lblNewLabel_1 = new JLabel();
 	protected static Clip clip;
@@ -37,7 +37,7 @@ public class Alphabets {
 		label.setFont(new Font("Times New Roman", Font.PLAIN, 34));
 
 		for (int i = 0; i < alphabets.length; i++) {
-			alphabets[i] = new JButton(names[i]);
+			alphabets[i] = new JButton(alp_names[i]);
 			alphabets[i].setBorder(BorderFactory.createLineBorder(Color.black));
 		}
 
@@ -172,7 +172,7 @@ public class Alphabets {
 				public void actionPerformed(ActionEvent ae) {
 					try {
 
-						BufferedImage img = ImageIO.read(Alphabets.class.getResource("/assets/" + names[n] + ".jpg")); 
+						BufferedImage img = ImageIO.read(Alphabets.class.getResource("/assets/" + alp_names[n] + ".jpg")); 
 						Image dimg = img.getScaledInstance(325, 350, Image.SCALE_SMOOTH);
 						ImageIcon imageIcon = new ImageIcon(dimg);
 						lblNewLabel_1.setIcon(imageIcon);
@@ -195,7 +195,7 @@ public class Alphabets {
 							    	if(clipCheck)
 							    		clip.stop();
 							        clip = AudioSystem.getClip();							        
-							        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Alphabets.class.getResource("/assets/"+ names[n] +".wav"));
+							        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Alphabets.class.getResource("/assets/"+ alp_names[n] +".wav"));
 							        clip.open(inputStream);
 							        clip.start(); 
 							        clipCheck = true;

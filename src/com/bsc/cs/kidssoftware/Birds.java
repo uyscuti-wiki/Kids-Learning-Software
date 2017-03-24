@@ -23,7 +23,7 @@ public class Birds {
 	
 	private JButton[] birds = new JButton[6];
 	private JLabel label = new JLabel("Birds");
-	private String[] names = {"Dove", "Eagle", "Parrot", "Peacock", "Sparrow", "Woodpecker"};
+	public static String[] bir_names = {"Dove", "Eagle", "Parrot", "Peacock", "Sparrow", "Woodpecker"};
 	private JLabel lblNewLabel_1 = new JLabel();
 	protected static Clip clip;
 	private Boolean clipCheck = false;
@@ -35,7 +35,7 @@ public class Birds {
 		label.setFont(new Font("Times New Roman", Font.PLAIN, 34));
 
 		for (int i = 0; i < birds.length; i++)
-				birds[i] = new JButton(names[i]);
+				birds[i] = new JButton(bir_names[i]);
 		
 		GroupLayout gl_panel_1 = new GroupLayout(birds_jp);
 		gl_panel_1.setHorizontalGroup(
@@ -88,7 +88,7 @@ public class Birds {
 				public void actionPerformed(ActionEvent ae) {
 					try {
 
-						BufferedImage img = ImageIO.read(Birds.class.getResource("/assets/" + names[n] + ".jpg"));
+						BufferedImage img = ImageIO.read(Birds.class.getResource("/assets/" + bir_names[n] + ".jpg"));
 						Image dimg = img.getScaledInstance(325, 350, Image.SCALE_SMOOTH);
 						ImageIcon imageIcon = new ImageIcon(dimg);
 						lblNewLabel_1.setIcon(imageIcon);
@@ -113,7 +113,7 @@ public class Birds {
 						    	if(clipCheck)
 						    		clip.stop();
 						        clip = AudioSystem.getClip();							        
-						        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Birds.class.getResource("/assets/" + names[n] + ".wav"));
+						        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Birds.class.getResource("/assets/" + bir_names[n] + ".wav"));
 						        clip.open(inputStream);
 						        clip.start(); 
 						        clipCheck = true;

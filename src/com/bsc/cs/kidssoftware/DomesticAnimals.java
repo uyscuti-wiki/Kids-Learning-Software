@@ -22,7 +22,7 @@ import javax.swing.SwingConstants;
 public class DomesticAnimals {
 	private JButton[] danimals = new JButton[6];
 	private JLabel label = new JLabel("Domestic Animals");
-	private String[] names = { "Cat", "Cow", "Dog", "Donkey", "Goat", "Pig"};
+	public static String[] dom_names = { "Cat", "Cow", "Dog", "Donkey", "Goat", "Pig"};
 	private JLabel lblNewLabel_1 = new JLabel();
 	protected static Clip clip;
 	private Boolean clipCheck = false;
@@ -34,7 +34,7 @@ public class DomesticAnimals {
 		label.setFont(new Font("Times New Roman", Font.PLAIN, 34));
 
 		for (int i = 0; i < danimals.length; i++)
-				danimals[i] = new JButton(names[i]);
+				danimals[i] = new JButton(dom_names[i]);
 		
 		GroupLayout gl_panel_1 = new GroupLayout(danimals_jp);
 		gl_panel_1.setHorizontalGroup(
@@ -86,7 +86,7 @@ public class DomesticAnimals {
 				public void actionPerformed(ActionEvent ae) {
 					try {
 
-						BufferedImage img = ImageIO.read(DomesticAnimals.class.getResource("/assets/" + names[n] + ".jpg"));
+						BufferedImage img = ImageIO.read(DomesticAnimals.class.getResource("/assets/" + dom_names[n] + ".jpg"));
 						Image dimg = img.getScaledInstance(325, 350, Image.SCALE_SMOOTH);
 						ImageIcon imageIcon = new ImageIcon(dimg);
 						lblNewLabel_1.setIcon(imageIcon);
@@ -111,7 +111,7 @@ public class DomesticAnimals {
 						    	if(clipCheck)
 						    		clip.stop();
 						        clip = AudioSystem.getClip();							        
-						        AudioInputStream inputStream = AudioSystem.getAudioInputStream(DomesticAnimals.class.getResource("/assets/" + names[n] + ".wav"));
+						        AudioInputStream inputStream = AudioSystem.getAudioInputStream(DomesticAnimals.class.getResource("/assets/" + dom_names[n] + ".wav"));
 						        clip.open(inputStream);
 						        clip.start(); 
 						        clipCheck = true;
