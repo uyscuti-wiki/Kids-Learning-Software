@@ -29,9 +29,9 @@ import javax.swing.SwingConstants;
 public class WelcomeModule extends JFrame {
 
     private static final long serialVersionUID = 1L;
-    private JPanel cardPanel, welcome_jp, alphabets_jp, numbers_jp, colors_jp, wanimals_jp, danimals_jp, birds_jp, fruits_jp, vegetables_jp, flowers_jp, test_jp;
+    protected static JPanel cardPanel, welcome_jp, alphabets_jp, numbers_jp, colors_jp, wanimals_jp, danimals_jp, birds_jp, fruits_jp, vegetables_jp, flowers_jp, test_jp;
     private JButton alphabets_btn, colors_btn, numbers_btn, wanimals_btn, danimals_btn, birds_btn, fruits_btn, vegetables_btn, flowers_btn;
-    private CardLayout cardLayout = new CardLayout();
+    protected static CardLayout cardLayout = new CardLayout();
     private JMenuBar menuBar;
     private JMenu mnFile;
     private JMenuItem mntmBack;
@@ -155,7 +155,7 @@ public class WelcomeModule extends JFrame {
         				.addComponent(alphabets_btn, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
         				.addComponent(wanimals_btn, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
         				.addComponent(fruits_btn, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE))
-        			.addGap(130)
+        			.addGap(150)
         			.addGroup(gl_panel.createParallelGroup(Alignment.LEADING, false)
         				.addComponent(danimals_btn, GroupLayout.DEFAULT_SIZE, GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         				.addComponent(colors_btn, GroupLayout.DEFAULT_SIZE, 110, Short.MAX_VALUE)
@@ -165,7 +165,7 @@ public class WelcomeModule extends JFrame {
         				.addComponent(numbers_btn, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
         				.addComponent(birds_btn, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE)
         				.addComponent(flowers_btn, GroupLayout.PREFERRED_SIZE, 110, GroupLayout.PREFERRED_SIZE))
-        			.addGap(81))
+        			.addGap(62))
         		.addGroup(gl_panel.createSequentialGroup()
         			.addContainerGap(214, Short.MAX_VALUE)
         			.addComponent(label)
@@ -324,7 +324,7 @@ public class WelcomeModule extends JFrame {
 				
 			}
 		});
-        new Test(test_jp);
+		new Test(test_jp);
         cardPanel.add(test_jp, "11");
         
         mntmNewMenuItem.addActionListener(new ActionListener() {

@@ -3,6 +3,8 @@ package com.bsc.cs.kidssoftware;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
@@ -11,12 +13,16 @@ import java.util.List;
 import java.util.Random;
 
 import javax.imageio.ImageIO;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
 import javax.swing.ButtonGroup;
 import javax.swing.GroupLayout;
 import javax.swing.GroupLayout.Alignment;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JRadioButton;
@@ -31,7 +37,15 @@ public class Test {
 	JButton btnNewButton, btnNext, btnEndTest;
 	JProgressBar progressBar;
 	List<String> lines;
-	List<Integer> randomfileint_history;
+	List<Integer> randomfileint_history = new ArrayList<>();
+	int count;
+	String filename;
+	int progressValue = 0;
+	boolean check = false;
+	protected static Clip clip;
+	private Boolean clipCheck = false;
+	File file, file2, dir;
+	File[] files;
 	
 	public Test(JPanel test_jp){
 		
@@ -52,9 +66,11 @@ public class Test {
 		btnEndTest = new JButton("End test");
 		
 		progressBar = new JProgressBar();
-		progressBar.setMaximum(10);
+		progressBar.setMaximum(9);
 		progressBar.setForeground(Color.GREEN);
 		
+		dir = new File("assets/");
+		files = dir.listFiles();
 
 		GroupLayout gl_panel_1 = new GroupLayout(test_jp);
 		gl_panel_1.setHorizontalGroup(
@@ -90,7 +106,7 @@ public class Test {
 					.addGroup(Alignment.LEADING, gl_panel_1.createSequentialGroup()
 						.addGap(78)
 						.addComponent(lblNewLabel, GroupLayout.PREFERRED_SIZE, 34, GroupLayout.PREFERRED_SIZE)
-						.addGap(60)
+						.addGap(30)
 						.addComponent(r_Button[0])
 						.addGap(18)
 						.addComponent(r_Button[1])
@@ -113,28 +129,136 @@ public class Test {
 			);
 		
 		test_jp.setLayout(gl_panel_1);
-
-		File dir = new File("assets/");
-		File[] files = dir.listFiles();
+		setValues();
 		
+		btnNext.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+
+				for(int j = 0; j < r_Button.length; j++){
+					
+					if(filename.contains(r_Button[j].getText()) && r_Button[j].isSelected()){
+						count++;
+						break;
+					}
+					else if (r_Button[j].getText().contains(filename) && r_Button[j].isSelected()) {
+						count++;
+						break;
+					}
+				}		
+				
+				rGroup.clearSelection();
+				setValues();
+				progressBar.setValue(++progressValue);
+				if(progressValue == 9){
+					btnNext.setEnabled(false);
+					btnEndTest.setText("Result");
+				}
+			}
+		});
+		
+		btnNewButton.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				
+				new Thread(new Runnable() {
+
+				    @Override
+					public void run() {
+				      try {
+				    	if(clipCheck)
+				    		clip.stop();
+				        clip = AudioSystem.getClip();							        
+				        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Test.class.getResource("/assets/" + file2.getName()));
+				        clip.open(inputStream);
+				        clip.start(); 
+				        clipCheck = true;
+				      } 
+				      catch (Exception e) {
+				        e.printStackTrace();
+				      }
+				    }
+				  }).start();
+				
+			}
+		});
+		btnEndTest.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				if(progressValue != 9){
+					if(JOptionPane.showConfirmDialog(test_jp, "Are you sure?") == 0){
+						JOptionPane.showMessageDialog(test_jp, "Your score is "+count+" out of 10.");
+						count = 0;
+						randomfileint_history = new ArrayList<>();
+						rGroup.clearSelection();
+						setValues();
+						btnNext.setEnabled(true);
+						btnEndTest.setText("End test");
+						progressValue = 0;
+						progressBar.setValue(progressValue);
+						WelcomeModule.cardLayout.show(WelcomeModule.cardPanel, "1"); 
+					}
+				}
+				else{
+					for(int j = 0; j < r_Button.length; j++){
+						
+						if(filename.contains(r_Button[j].getText()) && r_Button[j].isSelected()){
+							count++;
+							break;
+						}
+						else if (r_Button[j].getText().contains(filename) && r_Button[j].isSelected()) {
+							count++;
+							break;
+						}
+					}		
+					int decision = JOptionPane.showConfirmDialog(test_jp, "Your score is "+count+" out of 10. Click \"Yes\" to take the test again. \"No\" to return to homepage.");
+					if(decision == 0){
+						count = 0;
+						randomfileint_history = new ArrayList<>();
+						rGroup.clearSelection();
+						setValues();
+						btnNext.setEnabled(true);
+						btnEndTest.setText("End test");
+						progressValue = 0;
+						progressBar.setValue(progressValue);
+					}
+					else if(decision == 1){
+						count = 0;
+						randomfileint_history = new ArrayList<>();
+						rGroup.clearSelection();
+						setValues();
+						btnNext.setEnabled(true);
+						btnEndTest.setText("End test");
+						progressValue = 0;
+						progressBar.setValue(progressValue);
+						WelcomeModule.cardLayout.show(WelcomeModule.cardPanel, "1"); 
+					}
+				}
+			}
+		});
+	}
+	
+	void setValues(){
+
 		Random r = new Random();
 		int randomfileint = 2 * r.nextInt(files.length / 2);
-		randomfileint_history = new ArrayList<>();
-		randomfileint_history.add(randomfileint);
+		
+		
 		while(randomfileint_history.contains(randomfileint))
 				randomfileint = 2 * r.nextInt(files.length / 2);
-		File file = files[randomfileint];
-		/*File file2;
-		if(file.getName().contains(".jpg"))
-			file2 = files[randomfileint+1];
-		else
-			file2 = files[randomfileint-1];*/
+		randomfileint_history.add(randomfileint);
+		
+		file = files[randomfileint];
+		file2 = files[randomfileint+1];
 		
 		int index = file.getName().indexOf(".");
-		String filename = file.getName().substring(0, index);
-		System.out.println("Answer:"+file.getName());
+		filename = file.getName().substring(0, index);
+
 		try{
-		BufferedImage img = ImageIO.read(Numbers.class.getResource("/assets/"+file.getName()));
+		BufferedImage img = ImageIO.read(Test.class.getResource("/assets/"+file.getName()));
 		Image dimg = img.getScaledInstance(300, 250, Image.SCALE_SMOOTH);
 		ImageIcon imageIcon = new ImageIcon(dimg);
 		lblNewLabel_1.setIcon(imageIcon);
@@ -142,7 +266,9 @@ public class Test {
 		catch(Exception e){
 			e.printStackTrace();
 		}
-		boolean check = false;
+		
+		check = false;
+		
 		for(int j = 0; j < 26; j++){
 			
 			if(filename.equals(Alphabets.alp_names[j])){
@@ -165,7 +291,6 @@ public class Test {
 				Collections.shuffle(lines);
 				for(k=0; k < 4; k++){
 					r_Button[k].setText(lines.get(k));
-					System.out.println(lines.get(k));
 				}
 				check = true;
 				break;
@@ -202,13 +327,13 @@ public class Test {
 					break;
 
 				}
-				
+
 				int k = 0;
 				while(k < 3){
 					int r_num = r.nextInt(Numbers.num_names.length);
-					
-					if(lines.contains(Numbers.num_names[r_num].substring((Numbers.num_names[r_num].indexOf("-"))+1)));
-					else {
+
+					if(!lines.contains(Numbers.num_names[r_num]))
+					{
 						
 						switch(r_num){
 						
@@ -234,20 +359,21 @@ public class Test {
 							break;
 		
 						}
+
 						k++;
 					}
 				}
 				Collections.shuffle(lines);
 				for(k=0; k < 4; k++){
 					r_Button[k].setText(lines.get(k));
-					System.out.println(lines.get(k));
 				}
 				check = true;
 			}
-		if(!check){
 			
-			for(int j = 0; j < 6; j++){
+			for(int j = 0; j < 8; j++){
 				
+				if(check)
+					break;
 				if(filename.equals(Colors.col_names[j])){
 				
 					lines = new ArrayList<String>();
@@ -268,16 +394,20 @@ public class Test {
 					Collections.shuffle(lines);
 					for(k=0; k < 4; k++){
 						r_Button[k].setText(lines.get(k));
-						System.out.println(lines.get(k));
 					}
+					check = true;
 					break;
 				}
-				else if(filename.equals(Birds.bir_names[j])){
+				
+			for(int m = 0; m < 6; m++){
+				if(check)
+					break;
+				if(filename.equals(Birds.bir_names[m])){
 				
 					lines = new ArrayList<String>();
 					lines.add(filename);
-					int k = 0;
-					while(k < 3){
+					int p = 0;
+					while(p < 3){
 					
 					int r_bir = r.nextInt(Birds.bir_names.length);
 					
@@ -286,22 +416,22 @@ public class Test {
 					else{
 						
 						lines.add(Birds.bir_names[r_bir]);
-						k++;
+						p++;
 					}
 				}
 					Collections.shuffle(lines);
-					for(k=0; k < 4; k++){
-						r_Button[k].setText(lines.get(k));
-						System.out.println(lines.get(k));
+					for(p=0; p < 4; p++){
+						r_Button[p].setText(lines.get(p));
 					}
+					check = true;
 					break;
 				}
-				else if(filename.equals(WildAnimals.wil_names[j])){
+				else if(filename.equals(WildAnimals.wil_names[m])){
 					
 					lines = new ArrayList<String>();
 					lines.add(filename);
-					int k = 0;
-					while(k < 3){
+					int p = 0;
+					while(p < 3){
 					
 					int r_wil = r.nextInt(WildAnimals.wil_names.length);
 					
@@ -310,22 +440,23 @@ public class Test {
 					else{
 						
 						lines.add(WildAnimals.wil_names[r_wil]);
-						k++;
+						p++;
 					}
 				}
 					Collections.shuffle(lines);
-					for(k=0; k < 4; k++){
-						r_Button[k].setText(lines.get(k));
-						System.out.println(lines.get(k));
+					for(p=0; p < 4; p++){
+						r_Button[p].setText(lines.get(p));
+
 					}
+					check = true;
 					break;
 				}
-				else if(filename.equals(DomesticAnimals.dom_names[j])){
+				else if(filename.equals(DomesticAnimals.dom_names[m])){
 					
 					lines = new ArrayList<String>();
 					lines.add(filename);
-					int k = 0;
-					while(k < 3){
+					int p = 0;
+					while(p < 3){
 					
 					int r_dom = r.nextInt(DomesticAnimals.dom_names.length);
 					
@@ -334,22 +465,22 @@ public class Test {
 					else{
 						
 						lines.add(DomesticAnimals.dom_names[r_dom]);
-						k++;
+						p++;
 					}
 				}
 					Collections.shuffle(lines);
-					for(k=0; k < 4; k++){
-						r_Button[k].setText(lines.get(k));
-						System.out.println(lines.get(k));
+					for(p=0; p < 4; p++){
+						r_Button[p].setText(lines.get(p));
 					}
+					check = true;
 					break;
 				}
-				else if(filename.equals(Vegetables.veg_names[j])){
+				else if(filename.equals(Vegetables.veg_names[m])){
 					
 					lines = new ArrayList<String>();
 					lines.add(filename);
-					int k = 0;
-					while(k < 3){
+					int p = 0;
+					while(p < 3){
 					
 					int r_veg = r.nextInt(Vegetables.veg_names.length);
 					
@@ -358,22 +489,22 @@ public class Test {
 					else{
 						
 						lines.add(Vegetables.veg_names[r_veg]);
-						k++;
+						p++;
 					}
 				}
 					Collections.shuffle(lines);
-					for(k=0; k < 4; k++){
-						r_Button[k].setText(lines.get(k));
-						System.out.println(lines.get(k));
+					for(p=0; p < 4; p++){
+						r_Button[p].setText(lines.get(p));
 					}
+					check = true;
 					break;
 				}
-				else if(filename.equals(Flowers.flo_names[j])){
+				else if(filename.equals(Flowers.flo_names[m])){
 					
 					lines = new ArrayList<String>();
 					lines.add(filename);
-					int k = 0;
-					while(k < 3){
+					int p = 0;
+					while(p < 3){
 					
 					int r_flo = r.nextInt(Flowers.flo_names.length);
 					
@@ -382,22 +513,22 @@ public class Test {
 					else{
 						
 						lines.add(Flowers.flo_names[r_flo]);
-						k++;
+						p++;
 					}
 				}
 					Collections.shuffle(lines);
-					for(k=0; k < 4; k++){
-						r_Button[k].setText(lines.get(k));
-						System.out.println(lines.get(k));
+					for(p=0; p < 4; p++){
+						r_Button[p].setText(lines.get(p));
 					}
+					check = true;
 					break;
 				}
-				else if(filename.equals(Fruits.fru_names[j])){
+				else if(filename.equals(Fruits.fru_names[m])){
 					
 					lines = new ArrayList<String>();
 					lines.add(filename);
-					int k = 0;
-					while(k < 3){
+					int p = 0;
+					while(p < 3){
 					
 					int r_fru = r.nextInt(Fruits.fru_names.length);
 					
@@ -406,17 +537,17 @@ public class Test {
 					else{
 						
 						lines.add(Fruits.fru_names[r_fru]);
-						k++;
+						p++;
 					}
 				}
 					Collections.shuffle(lines);
-					for(k=0; k < 4; k++){
-						r_Button[k].setText(lines.get(k));
-						System.out.println(lines.get(k));
+					for(p=0; p < 4; p++){
+						r_Button[p].setText(lines.get(p));
 					}
+					check = true;
 					break;
 				}
 			}
-			}
+		}
 	}
 }
