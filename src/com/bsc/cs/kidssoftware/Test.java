@@ -6,7 +6,10 @@ import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -44,8 +47,10 @@ public class Test {
 	boolean check = false;
 	protected static Clip clip;
 	private Boolean clipCheck = false;
-	File file, file2, dir;
+	String file, file2, dir;
 	File[] files;
+	BufferedReader reader;
+	List<String> lines1;
 	
 	public Test(JPanel test_jp){
 		
@@ -68,10 +73,21 @@ public class Test {
 		progressBar = new JProgressBar();
 		progressBar.setMaximum(9);
 		progressBar.setForeground(Color.GREEN);
-		
-		dir = new File("assets/");
-		files = dir.listFiles();
 
+		try{
+			InputStream in = getClass().getClassLoader().getResourceAsStream("filenames/FileNames.txt");
+			reader = new BufferedReader(new InputStreamReader(in));
+			lines1 = new ArrayList<String>();
+			String line;
+			while( (line = reader.readLine()) != null ) {
+			    lines1.add(line);
+			}			
+			
+		}
+		catch(Exception e){
+			e.printStackTrace();
+		}
+		
 		GroupLayout gl_panel_1 = new GroupLayout(test_jp);
 		gl_panel_1.setHorizontalGroup(
 				gl_panel_1.createParallelGroup(Alignment.LEADING)
@@ -171,7 +187,7 @@ public class Test {
 				    	if(clipCheck)
 				    		clip.stop();
 				        clip = AudioSystem.getClip();							        
-				        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Test.class.getResource("/assets/" + file2.getName()));
+				        AudioInputStream inputStream = AudioSystem.getAudioInputStream(Test.class.getResource("/assets/" + file2));
 				        clip.open(inputStream);
 				        clip.start(); 
 				        clipCheck = true;
@@ -244,21 +260,20 @@ public class Test {
 	void setValues(){
 
 		Random r = new Random();
-		int randomfileint = 2 * r.nextInt(files.length / 2);
-		
+		int randomfileint = 2 * r.nextInt(lines1.size() / 2);
 		
 		while(randomfileint_history.contains(randomfileint))
-				randomfileint = 2 * r.nextInt(files.length / 2);
+				randomfileint = 2 * r.nextInt(lines1.size() / 2);
 		randomfileint_history.add(randomfileint);
 		
-		file = files[randomfileint];
-		file2 = files[randomfileint+1];
-		
-		int index = file.getName().indexOf(".");
-		filename = file.getName().substring(0, index);
+		file = lines1.get(randomfileint);
+		file2 = lines1.get(randomfileint+1);
+
+		int index = file.indexOf(".");
+		filename = file.substring(0, index);
 
 		try{
-		BufferedImage img = ImageIO.read(Test.class.getResource("/assets/"+file.getName()));
+		BufferedImage img = ImageIO.read(Test.class.getResource("/assets/" + file));
 		Image dimg = img.getScaledInstance(300, 250, Image.SCALE_SMOOTH);
 		ImageIcon imageIcon = new ImageIcon(dimg);
 		lblNewLabel_1.setIcon(imageIcon);
