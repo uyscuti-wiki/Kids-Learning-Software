@@ -39,7 +39,6 @@ public class WelcomeModule extends JFrame {
     private JMenu mnHelp;
     private JMenuItem mntmNewMenuItem_1;
     private JMenuItem mntmNewMenuItem_2;
-    private JMenuItem mntmNewMenuItem_3;
     private JMenuItem mntmNewMenuItem_4;
     
 
@@ -77,17 +76,13 @@ public class WelcomeModule extends JFrame {
         mnHelp = new JMenu("Help");
         menuBar.add(mnHelp);
         
-        mntmNewMenuItem_1 = new JMenuItem("Documentation");
+        mntmNewMenuItem_1 = new JMenuItem("About");
         mntmNewMenuItem_1.setPreferredSize(new Dimension(120, 22));
         mnHelp.add(mntmNewMenuItem_1);
         
-        mntmNewMenuItem_2 = new JMenuItem("About");
+        mntmNewMenuItem_2 = new JMenuItem("License");
         mntmNewMenuItem_2.setPreferredSize(new Dimension(120, 22));
         mnHelp.add(mntmNewMenuItem_2);
-        
-        mntmNewMenuItem_3 = new JMenuItem("Credits");
-        mntmNewMenuItem_3.setPreferredSize(new Dimension(120, 22));
-        mnHelp.add(mntmNewMenuItem_3);
         
         welcome_jp = new JPanel();
         welcome_jp.setBackground(new Color(147, 112, 219));
@@ -388,7 +383,7 @@ public class WelcomeModule extends JFrame {
             	try{
             		
             		if(Desktop.isDesktopSupported())
-            			Desktop.getDesktop().browse(new URI("http://www.kidssoftware.tk/"));
+            			Desktop.getDesktop().browse(new URI("https://www.gnu.org/licenses/gpl-3.0.en.html"));
             	}
             	catch(Exception e){
             		e.printStackTrace();
@@ -397,20 +392,6 @@ public class WelcomeModule extends JFrame {
             }
         });
 	   
-	mntmNewMenuItem_3.addActionListener(new ActionListener() {
-
-            public void actionPerformed(ActionEvent ae) {
-            	try{
-            		
-            		if(Desktop.isDesktopSupported())
-            			Desktop.getDesktop().browse(new URI("http://www.kidssoftware.tk/"));
-            	}
-            	catch(Exception e){
-            		e.printStackTrace();
-            	}
-            	
-            }
-        });
         
     }
 
