@@ -373,7 +373,37 @@ public class WelcomeModule extends JFrame {
             	try{
             		
             		if(Desktop.isDesktopSupported())
-            			Desktop.getDesktop().browse(new URI("http://www.example.com"));
+            			Desktop.getDesktop().browse(new URI("http://www.kidssoftware.tk/"));
+            	}
+            	catch(Exception e){
+            		e.printStackTrace();
+            	}
+            	
+            }
+        });
+	 
+	mntmNewMenuItem_2.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent ae) {
+            	try{
+            		
+            		if(Desktop.isDesktopSupported())
+            			Desktop.getDesktop().browse(new URI("http://www.kidssoftware.tk/"));
+            	}
+            	catch(Exception e){
+            		e.printStackTrace();
+            	}
+            	
+            }
+        });
+	   
+	mntmNewMenuItem_3.addActionListener(new ActionListener() {
+
+            public void actionPerformed(ActionEvent ae) {
+            	try{
+            		
+            		if(Desktop.isDesktopSupported())
+            			Desktop.getDesktop().browse(new URI("http://www.kidssoftware.tk/"));
             	}
             	catch(Exception e){
             		e.printStackTrace();
