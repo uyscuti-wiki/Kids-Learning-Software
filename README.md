@@ -1,4 +1,4 @@
-# Kids-Learning-Software
+# Learning made easy!
 ---------------------------------------------------------------
 A simple, fun software with basic learning stuff for kids
 
